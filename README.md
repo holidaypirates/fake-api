@@ -7,11 +7,11 @@ Fake api server
 
 #### Params
 
-- `no_error`
-- `force_error`
-- `count`
-- `min_stars`
-- `max_price`
+- `no_error` - prevents server from errors if set
+- `force_error` - enforces server error if set
+- `count` - search results count
+- `min_stars` - minimum hotel stars
+- `max_price` - maximum offer price
 
 #### Example
 ```sh
@@ -20,20 +20,20 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels
 ```json
 [
   {
-    "id": "13ef1108-7f18-40c7-ac0f-0e743b015755",
-    "name": "soluta aperiam rerum",
-    "country": "Seychelles",
-    "city": "Norbertberg",
-    "price": 140,
-    "images": [
+    "id": "13ef1108-7f18-40c7-ac0f-0e743b015755", //hotel id
+    "name": "soluta aperiam rerum", //hotel name
+    "country": "Seychelles", //hotel country
+    "city": "Norbertberg", //hotel country
+    "price": 140, //offer price
+    "images": [ //hotel images
       "http://lorempixel.com/640/480/city?87325",
       ...
     ],
-    "date_start": "2016-04-02T08:09:12.088Z",
-    "date_end": "2016-11-30T04:27:59.359Z",
-    "stars": 2,
-    "rating": 1.811553610023111,
-    "description": "Recusandae enim debitis quisquam pariatur. Velit sint provident commodi quia eaque. Sapiente quas explicabo voluptatibus quam et similique ab quo. Earum ut odio impedit voluptas at qui eos nulla. Ipsa dolorem in reiciendis officiis et atque sit similique."
+    "date_start": "2016-04-02T08:09:12.088Z", //offer start date
+    "date_end": "2016-11-30T04:27:59.359Z", //offer end date
+    "stars": 2, //hotel stars
+    "rating": 1.811553610023111, //hotel rating
+    "description": "Recusandae enim debitis quisquam pariatur..." //hotel description
   },
   ...
 ]
@@ -45,7 +45,7 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
 ```
 ```json
 {
-  "error": "Something failed!"
+  "error": "Something failed!" //error code
 }
 ```
 
@@ -53,7 +53,7 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
 
 #### Params
 
-- `hotel_id`
+- `hotel_id` - hotel id
 
 #### Example
 ```sh
@@ -62,10 +62,10 @@ curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-4
 ```json
 [
   {
-    "name": "Nigel Kub",
-    "comment": "Rerum est suscipit adipisci odio hic.",
-    "positive": false,
-    "hotel_id": "13ef1108-7f18-40c7-ac0f-0e743b015755"
+    "name": "Nigel Kub", //commenter name
+    "comment": "Rerum est suscipit adipisci odio hic.", //comment
+    "positive": true, //Boolean, false if comment is negative
+    "hotel_id": "13ef1108-7f18-40c7-ac0f-0e743b015755" //hotel id
   },
   ...
 ]
@@ -77,6 +77,6 @@ curl https://pirate-modelboat.herokuapp.com/api/reviews
 ```
 ```json
 {
-  "error": "No hotel id specified"
+  "error": "No hotel id specified" //error code
 }
 ```
