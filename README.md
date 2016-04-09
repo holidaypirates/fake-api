@@ -17,7 +17,7 @@ Fake api server
 ```sh
 curl https://pirate-modelboat.herokuapp.com/api/hotels
 ```
-```json
+```js
 [
   {
     "id": "13ef1108-7f18-40c7-ac0f-0e743b015755", //hotel id
@@ -43,7 +43,7 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels
 ```sh
 curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
 ```
-```json
+```js
 {
   "error": "Something failed!" //error code
 }
@@ -59,12 +59,12 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
 ```sh
 curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-40c7-ac0f-0e743b015755
 ```
-```json
+```js
 [
   {
     "name": "Nigel Kub", //commenter name
     "comment": "Rerum est suscipit adipisci odio hic.", //comment
-    "positive": true, //Boolean, false if comment is negative
+    "positive": true, //false if comment is negative
     "hotel_id": "13ef1108-7f18-40c7-ac0f-0e743b015755" //hotel id
   },
   ...
@@ -75,7 +75,7 @@ curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-4
 ```sh
 curl https://pirate-modelboat.herokuapp.com/api/reviews
 ```
-```json
+```js
 {
   "error": "No hotel id specified" //error code
 }
