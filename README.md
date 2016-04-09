@@ -45,7 +45,7 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
 ```
 ```js
 {
-  "error": "Something failed!" //error code
+  "error": "Something failed!" //error message
 }
 ```
 
@@ -77,6 +77,6 @@ curl https://pirate-modelboat.herokuapp.com/api/reviews
 ```
 ```js
 {
-  "error": "No hotel id specified" //error code
+  "error": "No hotel id specified" //error message
 }
 ```
