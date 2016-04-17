@@ -3,169 +3,166 @@
         <title>Modelboat</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.min.css" rel="stylesheet" />
+
+        <style>
+            .request-parameters-title {
+                margin-top: 35px;
+                margin-bottom: 25px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
             <h1>
-                pirate_modelboat
+                Holidaypirates fake api server
             </h1>
-            Fake api server
+            <hr/>
 
-            <h2>
-                Endpoints
-            </h2>
+            <h2>Endpoints</h2>
 
-            <h3>
-                Hotels [`api/hotels`]
-            </h3>
+            <h3>Get a hotels list</h3>
+            <pre>GET https://pirate-modelboat.herokuapp.com/api/hotels</pre>
 
-            <h4>
-                Params
-            </h4>
+            <h4 class="request-parameters-title">Request Parameters</h4>
 
-            <table class="table">
+            <table class="table table-bordered">
                 <tr>
-                    <td>`no_error`</td>
+                    <th>QUERY PARAMETER</th>
+                    <th>VALUE</th>
+                </tr>
+                <tr>
+                    <td>no_error</td>
                     <td>
-                        prevents server from errors if set
+                        <i>Optional.</i>
+                        Prevents server from errors if set.
+                        <p><i>
+                            By default server returns error sometimes.
+                        </i></p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        `force_error`
+                        force_error
                     </td>
                     <td>
-                        enforces server error if set
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        `count`
-                    </td>
-                    <td>
-                        search results count
+                        <i>Optional.</i>
+                        Enforces server error if set.
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        `min_stars`
+                        count
                     </td>
                     <td>
-                        minimum hotel stars
+                        <i>Optional.</i>
+                        The number of hotel objects to return. Default: random count from 0 to 500.
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        `max_price`
+                        min_stars
                     </td>
                     <td>
-                        maximum offer price
+                        <i>Optional.</i>
+                        Minimum hotel stars.
                     </td>
                 </tr>
-            </table>
-
-            <h4>
-                Example
-            </h4>
-            <pre><code class="language-nix">
-                curl https://pirate-modelboat.herokuapp.com/api/hotels
-            </code></pre>
-
-
-            <pre><code class="language-javascript">
-                [
-                  {
-                    "id": "13ef1108-7f18-40c7-ac0f-0e743b015755", //hotel id
-                    "name": "soluta aperiam rerum", //hotel name
-                    "country": "Seychelles", //hotel country
-                    "city": "Norbertberg", //hotel country
-                    "price": 140, //offer price
-                    "images": [ //hotel images
-                      "http://lorempixel.com/640/480/city?87325",
-                      ...
-                    ],
-                    "date_start": "2016-04-02T08:09:12.088Z", //offer start date
-                    "date_end": "2016-11-30T04:27:59.359Z", //offer end date
-                    "stars": 2, //hotel stars
-                    "rating": 1.811553610023111, //hotel rating
-                    "description": "Recusandae enim debitis quisquam pariatur..." //hotel description
-                  },
-                  ...
-                ]
-            </code></pre>
-
-            <h4>
-                Errors
-            </h4>
-
-            <pre><code class="language-nix">
-                curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
-            </code></pre>
-
-            <pre><code class="language-javascript">
-                {
-                  "error": "Something failed!" //error message
-                }
-            </code></pre>
-
-            <h3>
-                Reviews [`api/reviews`]
-            </h3>
-
-            <h4>
-                Params
-            </h4>
-
-            <table class="table">
                 <tr>
                     <td>
-                        `hotel_id`
+                        max_price
                     </td>
                     <td>
-                        hotel id
+                        <i>Optional.</i>
+                        Maximum offer price.
                     </td>
                 </tr>
             </table>
 
-            <h4>
-                Example
-            </h4>
-
-            <pre><code class="language-nix">
-                curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-40c7-ac0f-0e743b015755
+            <h4>Response example</h4>
+            <pre>curl https://pirate-modelboat.herokuapp.com/api/hotels</pre>
+            <pre class="language-javascript"><code class="language-javascript">
+[
+  {
+    "id": "13ef1108-7f18-40c7-ac0f-0e743b015755", //hotel id
+    "name": "soluta aperiam rerum", //hotel name
+    "country": "Seychelles", //hotel country
+    "city": "Norbertberg", //hotel city
+    "price": 140, //offer price
+    "images": [ //hotel images
+      "http://lorempixel.com/640/480/city?87325",
+      ...
+    ],
+    "date_start": "2016-04-02T08:09:12.088Z", //offer start date
+    "date_end": "2016-11-30T04:27:59.359Z", //offer end date
+    "stars": 2, //hotel stars
+    "rating": 1.811553610023111, //hotel rating
+    "description": "Recusandae enim debitis quisquam pariatur..." //hotel description
+  },
+  ...
+]
             </code></pre>
+
+            <h4>Errors</h4>
+
+            <pre>curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1</pre>
 
             <pre><code class="language-javascript">
-                [
-                  {
-                    "name": "Nigel Kub", //commenter name
-                    "comment": "Rerum est suscipit adipisci odio hic.", //comment
-                    "positive": true, //false if comment is negative
-                    "hotel_id": "13ef1108-7f18-40c7-ac0f-0e743b015755" //hotel id
-                  },
-                  ...
-                ]
+{
+  "error": "Something failed!" //error message
+}
             </code></pre>
 
-            <h4>
-                Errors
-            </h4>
+            <hr/>
 
-            <pre><code class="language-nix">
-                curl https://pirate-modelboat.herokuapp.com/api/reviews
-            </code></pre>
+            <h3>Get reviews</h3>
+            <pre>GET https://pirate-modelboat.herokuapp.com/api/reviews</pre>
+
+            <h4 class="request-parameters-title">Request Parameters</h4>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>QUERY PARAMETER</th>
+                    <th>VALUE</th>
+                </tr>
+                <tr>
+                    <td>
+                        hotel_id
+                    </td>
+                    <td>
+                        <b><i>Required.</i></b>
+                        Hotel id.
+                    </td>
+                </tr>
+            </table>
+
+            <h4>Response example</h4>
+
+            <pre>curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-40c7-ac0f-0e743b015755</pre>
 
             <pre><code class="language-javascript">
-                {
-                  "error": "No hotel id specified" //error message
-                }
+[
+  {
+    "name": "Nigel Kub", //commenter name
+    "comment": "Rerum est suscipit adipisci odio hic.", //comment
+    "positive": true, //false if comment is negative
+    "hotel_id": "13ef1108-7f18-40c7-ac0f-0e743b015755" //hotel id
+  },
+  ...
+]
             </code></pre>
 
+            <h4>Errors</h4>
+
+            <pre>curl https://pirate-modelboat.herokuapp.com/api/reviews</pre>
+
+            <pre><code class="language-javascript">
+{
+  "error": "No hotel id specified" //error message
+}
+            </code></pre>
 
         </div>
 
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/components/prism-nix.min.js"></script>
     </body>
 </html>
