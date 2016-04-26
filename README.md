@@ -15,7 +15,7 @@ Fake api server
 
 #### Example
 ```sh
-curl https://pirate-modelboat.herokuapp.com/api/hotels
+curl https://fake-hotel-api.herokuapp.com/api/hotels
 ```
 ```js
 [
@@ -41,7 +41,7 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels
 
 #### Errors
 ```sh
-curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
+curl https://fake-hotel-api.herokuapp.com/api/hotels?force_error=1
 ```
 ```js
 {
@@ -57,7 +57,7 @@ curl https://pirate-modelboat.herokuapp.com/api/hotels?force_error=1
 
 #### Example
 ```sh
-curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-40c7-ac0f-0e743b015755
+curl https://fake-hotel-api.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-40c7-ac0f-0e743b015755
 ```
 ```js
 [
@@ -73,7 +73,7 @@ curl https://pirate-modelboat.herokuapp.com/api/reviews?hotel_id=13ef1108-7f18-4
 
 #### Errors
 ```sh
-curl https://pirate-modelboat.herokuapp.com/api/reviews
+curl https://fake-hotel-api.herokuapp.com/api/reviews
 ```
 ```js
 {
