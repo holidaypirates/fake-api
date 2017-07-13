@@ -12,5 +12,8 @@
     "faker": "^3.1.0",
     "json-server": "^0.8.9",
     "lodash": "^4.9.0"
+  },
+  "engines": {
+    "node": "7.10.1"
   }
 }
